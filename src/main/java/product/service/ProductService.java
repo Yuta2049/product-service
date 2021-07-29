@@ -17,6 +17,7 @@ public class ProductService implements IProductService {
 
     @Override
     public void createProduct(Product product) {
+        System.out.println("Product was added");
         productList.add(product);
     }
 
