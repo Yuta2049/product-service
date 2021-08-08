@@ -3,6 +3,7 @@ package product.service;
 import org.springframework.stereotype.Service;
 import product.model.Product;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -14,6 +15,20 @@ import java.util.Optional;
 public class ProductService implements IProductService {
 
     private List<Product> productList = new ArrayList();
+
+    @PostConstruct
+    private void init() {
+        productList.add(Product.builder()
+                .id(1L)
+                .name("First")
+                .comment("predefined")
+                .build());
+        productList.add(Product.builder()
+                .id(1L)
+                .name("Second")
+                .comment("predefined")
+                .build());
+    }
 
     @Override
     public void createProduct(Product product) {
