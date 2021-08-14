@@ -22,7 +22,8 @@ public class AWSXRayServletFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        log.info("AWSXRayServletFilter is invoked");
+        //log.info("AWSXRayServletFilter is invoked");
+        System.out.println("AWSXRayServletFilter is invoked");
         filterChain.doFilter(servletRequest, servletResponse);
     }
 }
