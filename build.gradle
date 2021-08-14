@@ -3,6 +3,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
     id 'io.freefair.lombok' version '6.0.0-m2'
+    //id 'aws-xray-recorder-sdk-core' version '1.2.1'
 }
 
 group 'com.epam'
@@ -15,4 +16,14 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile("com.amazonaws:aws-xray-recorder-sdk-core")
+    compile("com.amazonaws:aws-xray-recorder-sdk-aws-sdk")
+    compile("com.amazonaws:aws-xray-recorder-sdk-aws-sdk-instrumentor")
+}
+
+dependencyManagement {
+    imports {
+        mavenBom('com.amazonaws:aws-java-sdk-bom:1.11.39')
+        mavenBom('com.amazonaws:aws-xray-recorder-sdk-bom:2.9.0')
+    }
 }
