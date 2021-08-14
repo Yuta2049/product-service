@@ -24,7 +24,7 @@ public class ProductService implements IProductService {
                 .comment("predefined")
                 .build());
         productList.add(Product.builder()
-                .id(1L)
+                .id(2L)
                 .name("Second")
                 .comment("predefined")
                 .build());
