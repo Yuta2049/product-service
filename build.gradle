@@ -15,15 +15,19 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'com.amazonaws:aws-java-sdk-xray'
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile("com.amazonaws:aws-xray-recorder-sdk-core")
     compile("com.amazonaws:aws-xray-recorder-sdk-aws-sdk")
     compile("com.amazonaws:aws-xray-recorder-sdk-aws-sdk-instrumentor")
+    implementation 'com.amazonaws:aws-xray-recorder-sdk-metrics'
+    compile("com.amazonaws:aws-xray-recorder-sdk-spring")
+    compile("com.amazonaws:aws-xray-recorder-sdk-apache-http")
 }
 
 dependencyManagement {
     imports {
-        mavenBom('com.amazonaws:aws-java-sdk-bom:1.11.39')
+        mavenBom('com.amazonaws:aws-java-sdk-bom:1.12.46')
         mavenBom('com.amazonaws:aws-xray-recorder-sdk-bom:2.9.0')
     }
 }

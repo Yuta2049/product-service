@@ -1,6 +1,7 @@
 package product.controller;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,7 @@ import product.service.IProductService;
 /**
  * @author Iuliia Tararueva
  */
+@Slf4j
 @RestController
 @AllArgsConstructor
 public class ProductController {
@@ -18,14 +20,14 @@ public class ProductController {
 
     @PostMapping("/products/")
     ResponseEntity<?> createProduct(@RequestBody Product product) {
-        System.out.println("Post products");
+        log.info("Post products");
         productService.createProduct(product);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping("/products/{id}")
     ResponseEntity<Product> getProduct(@PathVariable Long id) {
-        System.out.println("Get products");
+        log.info("Get products");
         Product product = productService.findProductById(id);
         if (product != null) {
             return new ResponseEntity<>(product, HttpStatus.OK);

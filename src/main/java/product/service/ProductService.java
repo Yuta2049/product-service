@@ -1,5 +1,6 @@
 package product.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import product.model.Product;
 
@@ -11,6 +12,7 @@ import java.util.Optional;
 /**
  * @author Iuliia Tararueva
  */
+@Slf4j
 @Service
 public class ProductService implements IProductService {
 
@@ -32,12 +34,12 @@ public class ProductService implements IProductService {
 
     @Override
     public void createProduct(Product product) {
-        System.out.println("Product was added");
+        log.info("Product was added");
         productList.add(product);
     }
 
     @Override
-    public Product findProductById(Long id) {       // TODO: А если нет продукта?
+    public Product findProductById(Long id) {
         Optional<Product> productOptional = productList.stream().filter(product -> product.getId().equals(id)).findAny();
         return productOptional.orElse(null);
     }
