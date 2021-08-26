@@ -18,6 +18,16 @@ public class ProductController {
 
     private IProductService productService;
 
+    @PostMapping("/createTables")
+    ResponseEntity<?> createTables() {
+        boolean result = productService.createTables();
+        if (result) {
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @PostMapping("/products/")
     ResponseEntity<?> createProduct(@RequestBody Product product) {
         log.info("Post products");

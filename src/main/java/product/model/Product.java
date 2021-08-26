@@ -1,8 +1,11 @@
 package product.model;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+import lombok.*;
+
+import java.io.Serializable;
 
 /**
  * @author Iuliia Tararueva
@@ -10,8 +13,16 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class Product {
+@NoArgsConstructor
+@AllArgsConstructor
+@DynamoDBTable(tableName="Products")
+public class Product implements Serializable {
+    @DynamoDBHashKey(attributeName="Id")
     Long id;
+
+    @DynamoDBAttribute(attributeName="Name")
     String name;
+
+    @DynamoDBAttribute(attributeName="Comment")
     String comment;
 }

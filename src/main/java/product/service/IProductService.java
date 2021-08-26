@@ -14,4 +14,6 @@ public interface IProductService {
     Product findProductById(Long id);
 
     List<Product> findAll();
+
+    boolean createTables();
 }
